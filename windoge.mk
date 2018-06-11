@@ -9,9 +9,9 @@ CONTINUOUS=-pvc
 
 MAIN=main
 SUBDIRS :=
-CONTENT_SOURCE := $(shell gfind content -type f -iname "*.tex")
+CONTENT_SOURCE := $(shell gfind content -type f -iname "*\.tex")
 SOURCES=$(MAIN).tex Makefile $(CONTENT_SOURCE)
-BIB_SOURCES := $(shell gfind . -type f -iname "*.bibpart")
+BIB_SOURCES := $(shell gfind . -type f -iname "*\.bibpart")
 
 all: once
 
@@ -41,7 +41,7 @@ bibtex.bib: $(BIB_SOURCES)
 	cat $^ > bibtex.bib
 
 lint:
-	chktex -v0 $(shell gfind . -type f -name "*.tex")
+	chktex -v0 $(shell gfind . -type f -name "*\.tex")
 
 test: clean bibtex.bib
 	latexmk -pdf -pdflatex="echo X | lualatex --draftmode --shell-escape --interaction=errorstopmode %O %S \; touch %D" $(MAIN)
