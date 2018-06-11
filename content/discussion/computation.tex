@@ -1,0 +1,30 @@
+\subsection{Computation: $f(I_t)$}
+
+\begin{frame}{Computation: $f(I_t)$}
+    \begin{equation*}
+        B: \alert{f(I_t)} \rightarrow O_t
+    \end{equation*}
+    \begin{columns}[t]
+        \begin{column}{0.5\textwidth}
+            Extractor function
+            \begin{itemize}
+                \item \textit{Unbiasing algorithms}
+                \item Extracts uniformly distributed sequences
+                \item SHA family
+                \item Requires known seed
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            Delay function
+            \begin{itemize}
+                \item Lower bound run time
+                \item Inherently sequential
+                \item Adjustable to advances in computation
+                \item Asymmetrically hard --- slow computation, fast verification
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+\note{
+    Delay functions are often extractors
+}

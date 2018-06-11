@@ -1,0 +1,71 @@
+\documentclass[12pt, aspectratio=169]{beamer}
+\input{preamble/setup.tex}
+
+\title{A Survey of Randomness Beacons}
+%\subtitle{}
+\date{}
+\author{\textbf{deis923e17}\\Mathias Sass Michno, Michael Toft Jensen, Sebastian Rom Kristensen}
+
+%\logo{\tikz [remember picture,overlay]
+%\node at
+%    ([yshift=8cm, xshift=-3cm]current page.south east)
+%    {\includegraphics[width=3cm]{figures/533516613.jpg}};}
+
+% BIGGER NOTES
+\makeatletter
+\defbeamertemplate*{note page}{mynotes}
+{%
+  %\notefont
+  \setlength{\leftmargini}{0pt}
+  \setlength{\leftmarginii}{1.5em}
+  \setlength{\leftmarginiii}{1.2em}
+	\setbeamertemplate{itemize/enumerate body begin}{\large}%
+	\setbeamertemplate{itemize/enumerate subbody begin}{\vspace{-6pt}\normalsize}%
+	\setbeamertemplate{itemize/enumerate subsubbody begin}{\vspace{-3pt}}%
+	\ifbeamercolorempty[bg]{note page}{}{%
+    \nointerlineskip%
+    \insertvrule{\paperheight}{note page.bg}%
+    \vskip-1\paperheight%
+  }%
+  %\vskip.25em
+  \nointerlineskip
+  \insertnote
+}
+\makeatother
+
+\setbeamertemplate{note page}[mynotes]
+
+\begin{document}
+
+% Title frame
+\begin{frame}
+    \tikz [remember picture, overlay]
+    \node at
+        ([yshift=5.5cm, xshift=-3cm]current page.south east)
+        {\includegraphics[width=2.3cm]{figures/keep/beacon.pdf}};
+    \titlepage
+\end{frame}
+\note{
+    Notes here baby
+}
+
+
+\subimport{content/}{index.tex}
+
+% Fixing bug in Hyperref with translation of Appendix.
+\renewcommand\appendixname{Appendix}
+\appendix
+
+\metroset{background=dark}
+\begin{frame}
+    \tikz [remember picture, overlay]
+    \node at
+        ([yshift=5.5cm, xshift=-3cm]current page.south east)
+        {\includegraphics[width=2.3cm]{figures/keep/beacon.pdf}};
+    \titlepage
+\end{frame}
+\note{
+    LAST SLIDE. THANKS. QUESTIONS?
+}
+
+\end{document}

@@ -1,0 +1,70 @@
+\usepackage{beamerthememetropolis}
+\usetheme{metropolis}
+\metroset{%
+block=fill,%
+background=light,%
+progressbar=foot,%
+titleformat=smallcaps,%
+}
+\usepackage{import}
+\usepackage{pgfpages}
+\setbeameroption{show notes on second screen=right}
+\usepackage{pgfplots}
+\usepackage{appendixnumberbeamer}
+\usepackage{booktabs}
+\usepackage{fixme}
+\fxsetup{status=draft, theme=color, layout=inline, silent=true}
+
+\usepackage{csquotes}
+\usepackage{seqsplit}
+\usepackage{multicol}
+
+% Slightly bolder font
+%\setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
+
+\usepackage{xcolor}
+
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+%\usepackage{pgfplots}
+%\usepgfplotslibrary{external, fillbetween}
+%\usepgfplotslibrary{fillbetween}
+%\pgfplotsset{compat=1.14}
+\usetikzlibrary{%
+    calc, positioning, fit, arrows.meta, backgrounds, math, external, shapes
+}
+%\tikzexternalize[prefix=figures/]
+%\tikzexternalenable{}
+
+%\tikzset{every picture/.style={/utils/exec={\sffamily}}}
+
+\tikzstyle{node} = [thick, circle, draw, fill=clnode, text width=1.5em, text centered, minimum height=1.5em]
+\tikzstyle{block} = [rectangle, draw, thick, fill=clcodeshade, text width=7.5em, text centered, minimum height=3em]
+\tikzstyle{arrow} = [draw, -{Stealth[length=2mm, width=2mm]}, thick]
+\tikzstyle{container} = [draw=GoogleLightGreen, fill=GoogleLightGreen!40, dashed, inner sep=0.3cm]
+
+% Box colors.
+\definecolor{clframe}{gray}{0.75}
+\definecolor{clshade}{gray}{0.95}
+\definecolor{clcodeshade}{gray}{0.93}
+\definecolor{clnode}{gray}{0.85}
+
+\definecolor{GoogleGreen}{HTML}{4CAF50}
+\definecolor{GoogleRed}{HTML}{F44336}
+\definecolor{GooglePurple}{HTML}{9C27B0}
+\definecolor{GoogleDeepPurple}{HTML}{673AB7}
+\definecolor{GoogleIndigo}{HTML}{3F51B5}
+\definecolor{GoogleBlue}{HTML}{2196F3}
+\definecolor{GoogleLightBlue}{HTML}{03A9F4}
+\definecolor{GoogleCyan}{HTML}{00BCD4}
+\definecolor{GoogleTeal}{HTML}{009688}
+\definecolor{GoogleLightGreen}{HTML}{8BC34A}
+\definecolor{GoogleLime}{HTML}{CDDC39}
+\definecolor{GoogleYellow}{HTML}{FFEB3B}
+\definecolor{GoogleAmber}{HTML}{FFC107}
+\definecolor{GoogleOrange}{HTML}{FF9800}
+\definecolor{GoogleDeepOrange}{HTML}{FF5722}
+\definecolor{GoogleBrown}{HTML}{795548}
+\definecolor{GoogleGrey}{HTML}{9E9E9E}
+\definecolor{GoogleBlueGrey}{HTML}{607D8B}
+
