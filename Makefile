@@ -7,7 +7,7 @@ FINDEXEC:=$(if $(IS_WINDOWS), gfind, find)
 #Apparently gfind on Windows wants e.g. *\.tex instead of *.tex
 FINDSTAR:=$(if $(IS_WINDOWS), *^\, *)
 
-LATEXOPT=--shell-escape --synctex=1
+LATEXOPT=--shell-escape --synctex=2
 NONSTOP=--interaction=nonstopmode
 
 LATEXMK=latexmk
@@ -36,7 +36,7 @@ clean:
 	$(LATEXMK) -C $(MAIN)
 	rm -f main.auxlock
 	rm -f bibtex.bib
-	rm -f figures/*.dpth figures/*.md5 figures/*.pdf figures/*.log figures/*.run.xml
+	rm -f figures/*.dpth, figures/*.md5, figures/*.pdf, figures/*.log, figures/*.run.xml
 	rm -f chktex.txt biblatexcheck.html
 
 once: $(MAIN).tex .refresh $(SOURCES) $(FIGURES) bibtex.bib
