@@ -1,12 +1,5 @@
 LATEX=lualatex
 
-UNAME=$(shell uname)
-IS_WINDOWS=$(filter windows32, $(UNAME))
-
-FINDEXEC:=$(if $(IS_WINDOWS), gfind, find)
-#Apparently gfind on Windows wants e.g. *\.tex instead of *.tex
-FINDSTAR:=$(if $(IS_WINDOWS), *^\, *)
-
 LATEXOPT=--shell-escape --synctex=1
 NONSTOP=--interaction=nonstopmode
 
@@ -16,9 +9,9 @@ CONTINUOUS=-pvc
 
 MAIN=main
 SUBDIRS :=
-CONTENT_SOURCE := $(shell $(FINDEXEC) content -type f -iname "$(FINDSTAR).tex")
+CONTENT_SOURCE := $(shell find content -type f -iname "*.tex")
 SOURCES=$(MAIN).tex Makefile $(CONTENT_SOURCE)
-BIB_SOURCES := $(shell $(FINDEXEC) . -type f -iname "$(FINDSTAR).bibpart")
+BIB_SOURCES := $(shell find . -type f -iname "*.bibpart")
 #FIGURES := $(shell for dir in "$(SUBDIRS)"; do find $$dir/img $$dir/fig -type f; done;)
 
 all: once
@@ -40,7 +33,7 @@ clean:
 	rm -f chktex.txt biblatexcheck.html
 
 once: $(MAIN).tex .refresh $(SOURCES) $(FIGURES) bibtex.bib
-	$(if $(IS_WINDOWS), , ./onfail.sh) $(LATEXMK) $(LATEXMKOPT) -pdflatex=\"$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S\" $(MAIN)
+	./onfail.sh $(LATEXMK) $(LATEXMKOPT) -pdflatex=\"$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S\" $(MAIN)
 
 continuous: $(MAIN).tex .refresh $(SOURCES) $(FIGURES) bibtex.bib
 	$(LATEXMK) $(LATEXMKOPT) $(CONTINUOUS) \
@@ -53,7 +46,7 @@ bibtex.bib: $(BIB_SOURCES)
 	cat $^ > bibtex.bib
 
 lint: bibtex.bib
-	-chktex -H1 -o chktex.txt -v2 -b0 $(shell $(FINDEXEC) . -type f -name "$(FINDSTAR).tex")
+	-chktex -H1 -o chktex.txt -v2 -b0 $(shell find . -type f -name "*.tex")
 
 test: clean bibtex.bib
 	latexmk -pdf -pdflatex="echo X | lualatex --draftmode --shell-escape --interaction=errorstopmode %O %S \; touch %D" $(MAIN)
