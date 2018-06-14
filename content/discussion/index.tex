@@ -9,13 +9,19 @@
 
 \begin{frame}{Alternative Delay Functions}
     \centering
-    Graph showing CPU hashes/second versus ASIC.
-    % https://www.buybitcoinworldwide.com/mining/hardware/dragonmint-16t/
-    
-    Is sloth even ASIC-able? Perhaps...
+    A dedicated ASIC to compute \emph{sloth} may be several\\orders of magnitudes faster.
+    \\
+    \vspace{1cm}
+    Adversary with ASIC must also execute an attack.
 \end{frame}
 \note{
-    Notes...
+    \begin{itemize}
+        \item Fast enough to pose a problem
+        \item (Because the asic is so fast, a user might not be able to see a commitment fast enough to trust it --- because network latency might be relatively high)
+        \item However, adversary must also be able to successfully execute an attack. The ASIC alone is not enough.
+        \item Still, we want to deter the usage of ASICs.
+        \item How can we do that?
+    \end{itemize} 
 }
 
 \begin{frame}{Alternative Delay Functions}
@@ -23,11 +29,14 @@
     \begin{columns}[T, onlytextwidth]
         \column{0.47\textwidth}
         \begin{block}{Memory-Hard Delay Function}
-            
+            \begin{itemize}
+                \item ASICs have limited memory.
+                \item Requiring e.g.\ 1 gb of memory per delay function would make ASICs infeasible
+            \end{itemize}
         \end{block}
 
         \column{0.47\textwidth}
-        \begin{block}{Trivially Change/Permutate Delay Function}
+        \begin{block}{Trivially Change Delay Function}
             \begin{itemize}
                 \item An ASIC costs a lot and is hard-wired
                 \item Changing/Permutating the delay function is free
@@ -36,7 +45,16 @@
     \end{columns}
 \end{frame}
 \note{
-    Notes...
+    \begin{itemize}
+        \item Memory-hard:
+        \begin{itemize}
+            \item 1 gb infeasible: That amount of memory can only be slow general RAM. Not fast enough for ASIC.
+        \end{itemize}
+        \item Change/Permutate:
+        \begin{itemize}
+            \item asdfasdlf
+        \end{itemize}
+    \end{itemize}
 }
 
 \metroset{block=transparent}
@@ -83,8 +101,8 @@
 
 \subsection{Practicalities}
 
-\begin{frame}{Stopping in a Fair Way}
-    A common necessity for real world applications.
+\begin{frame}{Practicalities: Stopping in a Fair Way}
+    A common necessity for most real world applications.
 
     Pattern, usability apps can support this in a standardized way (we cannot assume every application can get it right anyways).
 \end{frame}
@@ -92,9 +110,12 @@
     Notes...
 }
 
-\begin{frame}{Extending Trust into the Reality}
-    \centering
+\begin{frame}{Practicalities: Extending Trust into the Reality}
     How can we ensure that the lottery pays the money?
+    \begin{itemize}
+        \item Trust them and use third-party entity in case of problems (e.g.\ court).
+        \item Cryptocurrencies and smart contracts.
+    \end{itemize}
 \end{frame}
 \note{
     Notes...
