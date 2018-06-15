@@ -28,7 +28,7 @@
     \centering
     \begin{columns}[T, onlytextwidth]
         \column{0.47\textwidth}
-        \begin{block}{Memory-Hard Delay Function}
+        \begin{block}{Use Memory-Hard Delay Function}
             \begin{itemize}
                 \item ASICs have limited memory.
                 \item Requiring e.g.\ 1 gb of memory per delay function would make ASICs infeasible
@@ -36,17 +36,18 @@
         \end{block}
 
         \column{0.47\textwidth}
-        \begin{block}{Trivially Change Delay Function}
+        \begin{block}{Change Delay Function}
             \begin{itemize}
                 \item An ASIC costs a lot and is hard-wired
-                \item Changing/Permutating the delay function is free
+                \item Changing the delay function is free
+                \item We can even just permutate the delay function.
             \end{itemize}
         \end{block}
     \end{columns}
 \end{frame}
 \note{
     \begin{itemize}
-        \item Memory-hard:
+        \item Memory-hard: 
         \begin{itemize}
             \item 1 gb infeasible: That amount of memory can only be slow general RAM. Not fast enough for ASIC.
         \end{itemize}
