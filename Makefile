@@ -3,7 +3,12 @@ LATEX=lualatex
 LATEXOPT=--shell-escape --synctex=1
 NONSTOP=--interaction=nonstopmode
 
-LATEXMK=latexmk
+ifeq ($(findstring Microsoft,$(shell uname -v)),Microsoft)
+	LATEXMK=latexmk.exe
+else
+	LATEXMK=latexmk
+endif
+
 LATEXMKOPT=-pdf
 CONTINUOUS=-pvc
 
@@ -49,7 +54,7 @@ lint: bibtex.bib
 	-chktex -H1 -o chktex.txt -v2 -b0 $(shell find . -type f -name "*.tex")
 
 test: clean bibtex.bib
-	latexmk -pdf -pdflatex="echo X | lualatex --draftmode --shell-escape --interaction=errorstopmode %O %S \; touch %D" $(MAIN)
+	$(LATEXMK) -pdf -pdflatex="echo X | lualatex --draftmode --shell-escape --interaction=errorstopmode %O %S \; touch %D" $(MAIN)
 
 diff: clean bibtex.bib
 	-bash diff_cha.sh
