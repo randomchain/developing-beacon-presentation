@@ -5,8 +5,9 @@
 
 \begin{figure}
     \setstretch{0.8}
+    \pgfdeclarelayer{tmux}
     \pgfdeclarelayer{background}
-    \pgfsetlayers{background,main}
+    \pgfsetlayers{tmux,background,main}
     \pgfdeclareimage[interpolate=true, height=1.8cm]{twitter}{figures/keep/twitter.pdf}
     \centering\footnotesize
     \resizebox{\textwidth}{!}{%
@@ -23,13 +24,13 @@
                     \node[block] (icframe) [container, fit={(ic1) (ic3)}] {};
                 }
             \end{pgfonlayer}
-            \node[above=0cm of icframe] {Input Collectors};
+            \node[above=0cm of icframe] (ictitle) {Input Collectors};
 
-            \node[left=3em of ic1] (dummyin1) {};
-            \node[left=3em of ic2] (dummyin2) {};
+            \node[left=2.2em of ic1] (dummyin1) {};
+            \node[left=2.2em of ic2] (dummyin2) {};
             % \node[left=3em of ic4] (dummyin4) {};
-            \draw[arrow] ([yshift=.4em]dummyin1.east) -- node[pos=.4]{$i$} ([yshift=.4em]ic1.west);
-            \draw[arrow] ([yshift=-.4em]ic1.west) -- node[pos=.4]{$H(i)$} ([yshift=-.4em]dummyin1.east);
+            \draw[arrow] ([yshift=.4em]dummyin1.east) -- ([yshift=.4em]ic1.west);
+            \draw[arrow] ([yshift=-.4em]ic1.west) -- ([yshift=-.4em]dummyin1.east);
             \draw[arrow] ([yshift=.4em]dummyin2.east) -- ([yshift=.4em]ic2.west);
             \draw[arrow] ([yshift=-.4em]ic2.west) -- ([yshift=-.4em]dummyin2.east);
             % \draw[arrow] ([yshift=.4em]dummyin4.east) -- ([yshift=.4em]ic4.west);
@@ -37,7 +38,7 @@
 
             % Proxy
             \node[implblock, text width=4em, right=2em of icframe] (proxy1) {Stream\\Proxy};
-            \node[implsmallblock, below=1.8em of proxy1] (snooper1) {Monitoring\\\fname{snooper.py}};
+            \node[implblock, text width=4.9em, below=1.8em of proxy1] (snooper1) {Monitoring\\\fname{snooper.py}};
 
             \draw[arrow] (proxy1.south) -- (snooper1.north);
 
@@ -45,12 +46,29 @@
             \draw (ic2) edge[out=0, in=180, arrow] ([yshift=0em]proxy1.west);
             \draw (ic3) edge[out=0, in=180, arrow] ([yshift=-.8em]proxy1.west);
             % \draw (ic4) edge[out=0, in=180, arrow] ([yshift=-1.2em]proxy1.west);
+
+            \begin{pgfonlayer}{tmux}
+                \visible<2->{%
+                    \node[block] (tmuxic) [tmuxcontainer, fit={(icframe) (snooper1) (ictitle) (proxy1)}] {};
+                }
+            \end{pgfonlayer}
+            \node[below=0cm of tmuxic] {tmux input collection};
         }
 
         \visible<1->{%
 
             % Input processor
-            \node[implblock, text width=5.8em, right=1.8em of proxy1] (ip) {Input\\Processor\\\fname{merkle.py}};
+            \node[implblock, text width=5.8em, right=2.2em of proxy1] (ip) {Input\\Processor\\\fname{merkle.py}};
+
+            %Dummy nodes for fit
+            \begin{pgfonlayer}{tmux}
+                \only<1-2>{%
+                    \node[block] (tmuxip) [tmuxcontainer, fit={(ip) (ictitle.north-|ip) (snooper1.south-|ip)}] {};
+                }
+            \end{pgfonlayer}
+            \only<1-2>{%
+            \node[below=0cm of tmuxip] {tmux middle};
+        }
 
         }
         \visible<2->{%
@@ -70,18 +88,25 @@
                         \end{pgfonlayer}
                     \end{tikzpicture}
             };
-            \node[above=0cm of compframe] {Computation};
+            \node[above=0cm of compframe] (comptitle) {Computation};
             \draw ([yshift=1em]ip.east) edge[out=0, in=180, arrowdbl] (comp1.west);
 
             \draw ([yshift=.0em]ip.east) edge[out=0, in=180, arrowdbl](comp2.west);
 
             \draw ([yshift=-1em]ip.east) edge[out=0, in=180, arrowdbl] (comp3.west);
 
+            \begin{pgfonlayer}{tmux}
+                \visible<3->{%
+                    \node[block] (tmuxmid) [tmuxcontainer, fit={(ip) (ictitle.north-|ip) (snooper1.south-|ip) (compframe) (comptitle)}] {};
+                }
+            \end{pgfonlayer}
+            \node[below=0cm of tmuxmid] {tmux middle};
+
         }
         \visible<4->{%
             % Proxy
-            \node[implblock, text width=4em, right=2em of compframe] (proxy2) {Forward\\Proxy};
-            \node[implsmallblock, below=1.8em of proxy2] (snooper2) {Monitoring\\\fname{snooper.py}};
+            \node[implblock, text width=4em, right=2.2em of compframe] (proxy2) {Forward\\Proxy};
+            \node[implblock, text width=4.9em, below=1.8em of proxy2] (snooper2) {Monitoring\\\fname{snooper.py}};
 
             \draw[arrow] (proxy2.south) -- (snooper2.north);
 
@@ -97,13 +122,19 @@
                     \end{pgfonlayer}
                 \end{tikzpicture}
             };
-            \node[above=0cm of pubframe] {Publishers\vphantom{j}};
-            \node[right=2em of pub1] (dummyout1) {\texttt{\string{json\string}}};
-            \node[right=1.5em of pub2, inner sep = 0] (dummytwitter) {\pgfuseimage{twitter}};
-            \node[right=2em of pub2] (dummyout2) {};
+            \node[above=0cm of pubframe] (pubtitle) {Publishers\vphantom{j}};
+            \node[right=2.2em of pub1] (dummyout1) {\texttt{\string{json\string}}};
+            \node[right=1.7em of pub2, inner sep = 0] (dummytwitter) {\pgfuseimage{twitter}};
+            \node[right=2.2em of pub2] (dummyout2) {};
             \draw[arrow] (pub1) -- (dummyout1);
             \draw[arrow] (pub2) -- (dummyout2);
 
+            \begin{pgfonlayer}{tmux}
+                \visible<4->{%
+                    \node[block] (tmuxmpub) [tmuxcontainer, fit={(proxy2) (snooper2) (pubframe) (pubtitle) (ictitle.north-|proxy2) (snooper1.south-|proxy2)}] {};
+                }
+            \end{pgfonlayer}
+            \node[below=0cm of tmuxmpub] {tmux publishing};
             % Arrows
 
 

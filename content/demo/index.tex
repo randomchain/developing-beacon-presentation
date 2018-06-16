@@ -31,12 +31,54 @@
 
 \begin{frame}{Implementation}
     \makebox[\linewidth][c]{%
-        \begin{minipage}{\dimexpr\textwidth+4em\relax}
+        \begin{minipage}{\dimexpr\textwidth+4.5em\relax}
             \raggedright%
             \centering
             \subimport{}{impl_figure.tex}
         \end{minipage}%
     }
+\end{frame}
+
+\section{Usability}
+
+\begin{frame}[t]{User Interaction}
+    \begin{itemize}
+        \item Beacon publishes to outlets: files, Twitter, etc.
+        \item Users want convenience --- using the beacon should be painless
+        \item 3rd party usability applications
+            \begin{itemize}
+                \item Toolkit for verification etc.
+                \item Verification service
+                \item Input/verification daemon
+                \item Hidden beacon usage
+                \item API
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Usability Applications}
+    \begin{columns}[T,onlytextwidth]
+        \column{0.47\textwidth}
+
+        \begin{block}{Verification CLI}
+            \begin{itemize}
+                \item Check inclusion of an input
+                \item Verify computation (Sloth)
+            \end{itemize}
+        \end{block}
+
+        \column{0.47\textwidth}
+
+        \begin{block}{Web App}
+            \begin{itemize}
+                \item Give input
+                \item Check commits
+                \item Explore Merkle Tree
+                \item Explore Output and proof
+            \end{itemize}
+        \end{block}
+
+    \end{columns}
 \end{frame}
 
 % SOA/Pipeline
