@@ -1,0 +1,123 @@
+\tikzstyle{implsmallblock} = [rectangle, draw, thick, fill=clcodeshade, text width=6.2em, text centered, minimum height=2em]
+\tikzstyle{implblock} = [rectangle, draw, thick, fill=clcodeshade, text width=7.5em, text centered, minimum height=3em]
+
+\newcommand{\fname}[1]{\texttt{\tiny#1}}
+
+\begin{figure}
+    \setstretch{0.8}
+    \pgfdeclarelayer{background}
+    \pgfsetlayers{background,main}
+    \pgfdeclareimage[interpolate=true, height=1.8cm]{twitter}{figures/keep/twitter.pdf}
+    \centering\footnotesize
+    \resizebox{\textwidth}{!}{%
+    \begin{tikzpicture}[
+        auto, remember picture]
+        % Input collectors:
+        \visible<2->{%
+            \node[implsmallblock] (ic1) {HTTP\\\fname{simple\_http.py}};
+            \node[implsmallblock, below=.8em of ic1] (ic2) {TCP\\\fname{simple\_tcp.py}};
+            \node[implsmallblock, below=.8em of ic2] (ic3) {urandom\\\fname{urandom.py}};
+            % \node[implsmallblock, below=.8em of ic3] (ic4) {Telegram\\\fname{telegram\_bot}};
+            \begin{pgfonlayer}{background}
+                \visible<2->{%
+                    \node[block] (icframe) [container, fit={(ic1) (ic3)}] {};
+                }
+            \end{pgfonlayer}
+            \node[above=0cm of icframe] {Input Collectors};
+
+            \node[left=3em of ic1] (dummyin1) {};
+            \node[left=3em of ic2] (dummyin2) {};
+            % \node[left=3em of ic4] (dummyin4) {};
+            \draw[arrow] ([yshift=.4em]dummyin1.east) -- node[pos=.4]{$i$} ([yshift=.4em]ic1.west);
+            \draw[arrow] ([yshift=-.4em]ic1.west) -- node[pos=.4]{$H(i)$} ([yshift=-.4em]dummyin1.east);
+            \draw[arrow] ([yshift=.4em]dummyin2.east) -- ([yshift=.4em]ic2.west);
+            \draw[arrow] ([yshift=-.4em]ic2.west) -- ([yshift=-.4em]dummyin2.east);
+            % \draw[arrow] ([yshift=.4em]dummyin4.east) -- ([yshift=.4em]ic4.west);
+            % \draw[arrow] ([yshift=-.4em]ic4.west) -- ([yshift=-.4em]dummyin4.east);
+
+            % Proxy
+            \node[implblock, text width=4em, right=2em of icframe] (proxy1) {Stream\\Proxy};
+            \node[implsmallblock, below=1.8em of proxy1] (snooper1) {Monitoring\\\fname{snooper.py}};
+
+            \draw[arrow] (proxy1.south) -- (snooper1.north);
+
+            \draw (ic1) edge[out=0, in=180, arrow] ([yshift=.8em]proxy1.west);
+            \draw (ic2) edge[out=0, in=180, arrow] ([yshift=0em]proxy1.west);
+            \draw (ic3) edge[out=0, in=180, arrow] ([yshift=-.8em]proxy1.west);
+            % \draw (ic4) edge[out=0, in=180, arrow] ([yshift=-1.2em]proxy1.west);
+        }
+
+        \visible<1->{%
+
+            % Input processor
+            \node[implblock, text width=5.8em, right=1.8em of proxy1] (ip) {Input\\Processor\\\fname{merkle.py}};
+
+        }
+        \visible<2->{%
+            \draw[arrow] (proxy1) -- (ip);
+        }
+        \visible<3->{%
+            % Computation
+            \node[right=2em of ip] (compi) {
+                    \begin{tikzpicture}
+                        \node[implsmallblock] (comp1) {Node 1\\\fname{delay\_sloth.py}};
+                        \node[implsmallblock, below=.8em of comp1] (comp2) {Node 2\\\fname{delay\_sloth.py}};
+                        \node[implsmallblock, below=.8em of comp2] (comp3) {Node 3\\\fname{delay\_sloth.py}};
+                        \begin{pgfonlayer}{background}
+                            \visible<3->{%
+                                \node[block] (compframe) [container, fit={(comp1) (comp3)}] {};
+                            }
+                        \end{pgfonlayer}
+                    \end{tikzpicture}
+            };
+            \node[above=0cm of compframe] {Computation};
+            \draw ([yshift=1em]ip.east) edge[out=0, in=180, arrowdbl] (comp1.west);
+
+            \draw ([yshift=.0em]ip.east) edge[out=0, in=180, arrowdbl](comp2.west);
+
+            \draw ([yshift=-1em]ip.east) edge[out=0, in=180, arrowdbl] (comp3.west);
+
+        }
+        \visible<4->{%
+            % Proxy
+            \node[implblock, text width=4em, right=2em of compframe] (proxy2) {Forward\\Proxy};
+            \node[implsmallblock, below=1.8em of proxy2] (snooper2) {Monitoring\\\fname{snooper.py}};
+
+            \draw[arrow] (proxy2.south) -- (snooper2.north);
+
+            % Publishers
+            \node[right=1.8em of proxy2] (pubi) {
+                \begin{tikzpicture}
+                    \node[implsmallblock] (pub1) {JSON Dump\\\fname{json\_dump.py}};
+                    \node[implsmallblock, below=1.5em of pub1] (pub2) {Twitter\\\fname{twitter.py}};
+                    \begin{pgfonlayer}{background}
+                        \visible<4->{%
+                            \node[block] (pubframe) [container, fit={(pub1) (pub2)}] {};
+                        }
+                    \end{pgfonlayer}
+                \end{tikzpicture}
+            };
+            \node[above=0cm of pubframe] {Publishers\vphantom{j}};
+            \node[right=2em of pub1] (dummyout1) {\texttt{\string{json\string}}};
+            \node[right=1.5em of pub2, inner sep = 0] (dummytwitter) {\pgfuseimage{twitter}};
+            \node[right=2em of pub2] (dummyout2) {};
+            \draw[arrow] (pub1) -- (dummyout1);
+            \draw[arrow] (pub2) -- (dummyout2);
+
+            % Arrows
+
+
+            % \draw (comp1.east) edge[out=0, in=180, arrow] node[inner sep=1pt, align=left]{3. Commitment\\5. Output} ([yshift=.8em]proxy2.west);
+            \draw (comp1.east) edge[out=0, in=180, arrow] ([yshift=.8em]proxy2.west);
+
+            \draw (comp2.east) edge[out=0, in=180, arrow] ([yshift=0em]proxy2.west);
+            \draw (comp3.east) edge[out=0, in=180, arrow] ([yshift=-.8em]proxy2.west);
+
+            \draw ([yshift=.6em]proxy2.east) edge[out=0, in=180, arrow] (pub1.west);
+            \draw ([yshift=-.6em]proxy2.east) edge[out=0, in=180, arrow] (pub2.west);
+
+        }
+        % Explanations
+
+    \end{tikzpicture}}
+\end{figure}

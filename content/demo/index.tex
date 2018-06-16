@@ -1,0 +1,59 @@
+\section{Architecture}
+\note{
+    \begin{itemize}
+        \item yay
+    \end{itemize}
+}
+
+\begin{frame}[t]{Architecture}
+    \only<1>{%
+    \textbf{Service Oriented}
+        \begin{itemize}
+            \item Separation of concerns
+            \item Components/Services are black boxes
+            \item Must adhere to predefined communication API
+            \item Components can be added or removed dynamically
+            \item Scalability and fault tolerance
+            \item Compose a beacon to fit needs
+        \end{itemize}
+    }
+    \only<2>{%
+    \textbf{Pipeline}
+        \begin{itemize}
+            \item More strict pattern
+            \item Data flows in one direction
+            \item Components are producers, consumers, or both
+            \item No cyclic communication
+            \item Clean interface
+        \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Implementation}
+    \makebox[\linewidth][c]{%
+        \begin{minipage}{\dimexpr\textwidth+4em\relax}
+            \raggedright%
+            \centering
+            \subimport{}{impl_figure.tex}
+        \end{minipage}%
+    }
+\end{frame}
+
+% SOA/Pipeline
+%   Implications
+%   Pros/cons
+% Look at the architecture figure
+% Relate to actual implementation
+%   Each component and how it fits into the figure
+%   How we communicate
+% Spin up a new beacon
+%   Go from 1 to multiple input collectors
+%   Add computation nodes dynamically (maybe?)
+%   Add publishers
+
+
+% Quickly demonstrate possible usability apps
+%   Verification CLI
+%   Web app ??
+% Present other possible supporting apps
+

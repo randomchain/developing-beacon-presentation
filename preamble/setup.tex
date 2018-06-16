@@ -18,20 +18,20 @@ titleformat=smallcaps,%
 \usepackage{csquotes}
 \usepackage{seqsplit}
 \usepackage{multicol}
+\usepackage{setspace}
 
 % Slightly bolder font
 %\setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
-
 \usepackage{xcolor}
-
 \usepackage{tikz}
 \usepackage{tikz-qtree}
-%\usepackage{pgfplots}
-%\usepgfplotslibrary{external, fillbetween}
-%\usepgfplotslibrary{fillbetween}
-%\pgfplotsset{compat=1.14}
+\usepackage{pgfplots}
+\usepgfplotslibrary{external, fillbetween}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=newest}
 \usetikzlibrary{%
-    calc, positioning, fit, arrows.meta, backgrounds, math, external, shapes
+    calc, positioning, fit, arrows.meta, backgrounds,
+    math, external, trees, decorations.text
 }
 %\tikzexternalize[prefix=figures/]
 %\tikzexternalenable{}
@@ -39,8 +39,13 @@ titleformat=smallcaps,%
 %\tikzset{every picture/.style={/utils/exec={\sffamily}}}
 
 \tikzstyle{node} = [thick, circle, draw, fill=clnode, text width=1.5em, text centered, minimum height=1.5em]
+%\tikzstyle{block-textdepthfix} = [rectangle, draw, thick, fill=clcodeshade, text width=7.5em, text centered, minimum height=3em, text depth=.25ex]
 \tikzstyle{block} = [rectangle, draw, thick, fill=clcodeshade, text width=7.5em, text centered, minimum height=3em]
+\tikzstyle{blockdef} = [rectangle, draw, thick, fill=clcodeshade, text width=4em, text centered, minimum height=3em]
+\tikzstyle{smallblock} = [rectangle, draw, thick, fill=clcodeshade, text width=4em, text centered, minimum height=2em]
 \tikzstyle{arrow} = [draw, -{Stealth[length=2mm, width=2mm]}, thick]
+\tikzstyle{arrowrev} = [draw, {Stealth[length=2mm, width=2mm]}-, thick]
+\tikzstyle{arrowdbl} = [draw, {Stealth[length=2mm, width=2mm]}-{Stealth[length=2mm, width=2mm]}, thick]
 \tikzstyle{container} = [draw=GoogleLightGreen, fill=GoogleLightGreen!40, dashed, inner sep=0.3cm]
 
 % Box colors.
