@@ -28,6 +28,11 @@
         \end{itemize}
     }
 \end{frame}
+\note{
+    \begin{itemize}
+        \item Wow
+    \end{itemize}
+}
 
 \begin{frame}{Implementation}
     \makebox[\linewidth][c]{%
@@ -38,6 +43,11 @@
         \end{minipage}%
     }
 \end{frame}
+\note{
+    \begin{itemize}
+        \item These are important
+    \end{itemize}
+}
 
 \section{Usability}
 
@@ -46,40 +56,72 @@
         \item Beacon publishes to outlets: files, Twitter, etc.
         \item Users want convenience --- using the beacon should be painless
         \item 3rd party usability applications
-            \begin{itemize}
-                \item Toolkit for verification etc.
-                \item Verification service
-                \item Input/verification daemon
-                \item Hidden beacon usage
-                \item API
-            \end{itemize}
     \end{itemize}
 \end{frame}
+\note{
+    \begin{itemize}
+        \item These are important
+    \end{itemize}
+}
 
 \begin{frame}[t]{Usability Applications}
     \begin{columns}[T,onlytextwidth]
-        \column{0.47\textwidth}
+        \column{0.49\textwidth}
 
         \begin{block}{Verification CLI}
-            \begin{itemize}
+            \small
+            \begin{compactitem}
                 \item Check inclusion of an input
                 \item Verify computation (Sloth)
-            \end{itemize}
+            \end{compactitem}
         \end{block}
 
-        \column{0.47\textwidth}
+        \only<3->{%
+        \begin{block}{User Daemon}
+            \small
+            \begin{compactitem}
+                \item Constantly input in the background
+                \item Check all commitments
+                \item Verify all outputs
+                \item Supply latest trustable output to user
+            \end{compactitem}
+        \end{block}
+        }
+
+        \pause
+
+        \column{0.49\textwidth}
 
         \begin{block}{Web App}
-            \begin{itemize}
+            \small
+            \begin{compactitem}
                 \item Give input
                 \item Check commits
                 \item Explore Merkle Tree
                 \item Explore Output and proof
-            \end{itemize}
+            \end{compactitem}
         \end{block}
 
+        \only<3->{%
+        \begin{block}{API}
+            \small
+            \begin{compactitem}
+                \item Use beacon in the background
+                \item Present trustable randomness
+                \item Can be used to implement custom ceremonies
+            \end{compactitem}
+        \end{block}
+        }
     \end{columns}
 \end{frame}
+\note[itemize]{
+        \item CLI demo
+        \item Web App demo
+        \item Other possibilities
+        \item Daemon can remove ``pain'' in using beacon
+        \item API can facilitate custom usage, e.g.\ lotteries, protocol bootstrap
+        \item API could also be for smart contracts!
+}
 
 % SOA/Pipeline
 %   Implications

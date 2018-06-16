@@ -19,7 +19,9 @@ titleformat=smallcaps,%
 \usepackage{seqsplit}
 \usepackage{multicol}
 \usepackage{setspace}
-
+\usepackage{enumitem}
+\newlist{compactitem}{itemize}{3} % 3 is max-depth
+\setlist[compactitem]{label=\textbullet, nosep}
 % Slightly bolder font
 %\setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
 \usepackage{xcolor}
