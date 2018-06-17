@@ -6,33 +6,36 @@
 }
 
 \begin{frame}[t]{Architecture}
-    \only<1>{%
     \textbf{Service Oriented}
+    \begin{itemize}
+        \item Separation of concerns
+        \item Components/Services are black boxes
+        \item Must adhere to predefined communication API
+        \item Components can be added or removed dynamically
+        \item Scalability and fault tolerance
+        \item Compose a beacon to fit needs
+    \end{itemize}
+    \note{
         \begin{itemize}
-            \item Separation of concerns
-            \item Components/Services are black boxes
-            \item Must adhere to predefined communication API
-            \item Components can be added or removed dynamically
-            \item Scalability and fault tolerance
-            \item Compose a beacon to fit needs
-        \end{itemize}
-    }
-    \only<2>{%
-    \textbf{Pipeline}
-        \begin{itemize}
-            \item More strict pattern
-            \item Data flows in one direction
-            \item Components are producers, consumers, or both
-            \item No cyclic communication
-            \item Clean interface
+            \item Uhm.
         \end{itemize}
     }
 \end{frame}
-\note{
+\begin{frame}[t]{Architecture}
+    \textbf{Pipeline}
     \begin{itemize}
-        \item Wow
+        \item More strict pattern
+        \item Data flows in one direction
+        \item Components are producers, consumers, or both
+        \item No cyclic communication
+        \item Clean interface
     \end{itemize}
-}
+    \note{
+        \begin{itemize}
+            \item Wow
+        \end{itemize}
+    }
+\end{frame}
 
 \begin{frame}{Implementation}
     \makebox[\linewidth][c]{%
@@ -42,12 +45,36 @@
             \subimport{}{impl_figure.tex}
         \end{minipage}%
     }
-\end{frame}
-\note{
+\note<1>{\textbf{Start with input processor.}
     \begin{itemize}
-        \item These are important
+        \item Uses tmux to separate the beacon into tree windows.
+        \item Inputs are aggregated
+        \item When ready to compute merkle tree is built.
+        \item Work is sent to available workers.
+        \item But we are not able to receive user inputs yet.
     \end{itemize}
 }
+\note<2>{\textbf{Next up is input collection.}
+    \begin{itemize}
+        \item Proxy to allow for easier connection etc.
+        \item Stream proxy is fan-in/fan-out --- fair message distribution.
+        \item Proxy allows for multiple input ``aggregators'' which e.g.\ can build sub merkle trees.
+        \item Three input collectors.
+    \end{itemize}
+}
+\note<3>{\textbf{We need to do some computing to get outputs}
+    \begin{itemize}
+        \item In this case three computational nodes are deployed.
+        \item Announces themselves to input processor, and receive work as per the schedule.
+    \end{itemize}
+}
+\note<4>{\textbf{Finally, we must publish outputs, commitments, and proofs.}
+    \begin{itemize}
+        \item Also using a proxy here.
+        \item Two publishers, note that twitter only publishes proofs! --- ``Gimmick''
+    \end{itemize}
+}
+\end{frame}
 
 \section{Usability}
 
@@ -60,7 +87,10 @@
 \end{frame}
 \note{
     \begin{itemize}
-        \item These are important
+        \item We need to be aware of the user interaction with our beacon
+        \item The beacon itself should be kept as simple as possible
+        \item Features often means complexity and thereby bugs
+        \item Users should not need to interact directly with the beacon --- But it should be possible to do so! \textbf{Transparency}
     \end{itemize}
 }
 
@@ -114,13 +144,15 @@
         }
     \end{columns}
 \end{frame}
-\note[itemize]{
+\note{
+    \begin{itemize}
         \item CLI demo
         \item Web App demo
         \item Other possibilities
         \item Daemon can remove ``pain'' in using beacon
         \item API can facilitate custom usage, e.g.\ lotteries, protocol bootstrap
         \item API could also be for smart contracts!
+    \end{itemize}
 }
 
 % SOA/Pipeline
