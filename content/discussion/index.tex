@@ -11,52 +11,43 @@
 
 \begin{frame}{Alternative Delay Functions}
     \centering
-    A dedicated ASIC to compute \emph{sloth} may be several\\orders of magnitudes faster.
+    A dedicated ASIC to compute \emph{sloth} may be faster.
     \\
     \vspace{1cm}
-    Adversary with ASIC must also execute an attack.
+    Adversary with ASIC must also be able to execute an attack.
 \end{frame}
 \note{
     \begin{itemize}
-        \item Fast enough to pose a problem
-        \item (Because the asic is so fast, a user might not be able to see a commitment fast enough to trust it --- because network latency might be relatively high)
-        \item However, adversary must also be able to successfully execute an attack. The ASIC alone is not enough.
-        \item Still, we want to deter the usage of ASICs.
-        \item How can we do that?
+        \item aaaa
     \end{itemize} 
 }
 
 \begin{frame}{Alternative Delay Functions}
+    \textbf{Two solutions:}
+
+    \vspace{.5cm}
     \centering
     \begin{columns}[T, onlytextwidth]
         \column{0.47\textwidth}
         \begin{block}{Use Memory-Hard Delay Function}
             \begin{itemize}
                 \item ASICs have limited memory.
-                \item Requiring e.g.\ 1 gb of memory per delay function would make ASICs infeasible
+                \item Requiring memory in delay function makes ASICs infeasible
             \end{itemize}
         \end{block}
 
         \column{0.47\textwidth}
         \begin{block}{Change Delay Function}
             \begin{itemize}
-                \item An ASIC costs a lot and is hard-wired
-                \item Changing the delay function is free
-                \item We can even just permutate the delay function.
+                \item ASIC: expensive and hard-wired
+                \item Beacon: Changing/permutating delay function is free
             \end{itemize}
         \end{block}
     \end{columns}
 \end{frame}
 \note{
     \begin{itemize}
-        \item Memory-hard: 
-        \begin{itemize}
-            \item 1 gb infeasible: That amount of memory can only be slow general RAM. Not fast enough for ASIC.
-        \end{itemize}
-        \item Change/Permutate:
-        \begin{itemize}
-            \item asdfasdlf
-        \end{itemize}
+        \item aaaaa
     \end{itemize}
 }
 
@@ -67,16 +58,16 @@
     \begin{columns}[T,onlytextwidth]
         \column{0.47\textwidth}
 
-        \begin{block}{Input Flooding}
-          \begin{itemize}
-              \item Rate limiting
-              \item Proof-of-Work puzzle
-          \end{itemize}
+        \begin{block}{Cryptography Exploit}
+            \begin{itemize}
+                
+                \item Beacon not dependent on any algorithm
+            \end{itemize}
         \end{block}
 
         \begin{block}{Eclipse Attacks}
             \begin{itemize}
-                \item We accept carrier pidgeon?
+                \item Have multiple connections to outside world
             \end{itemize}
         \end{block}
 
@@ -84,18 +75,18 @@
 
         \begin{block}{Operator Shutdown}
             \begin{itemize}
-                \item Eventually will drive users away
+                \item Only disrupts use cases
             \end{itemize}
         \end{block}
 
-        \begin{block}{Cryptography Exploit}
-            \begin{itemize}
-                \item We cannot anticipate these attacks
-                \item We are not dependent on any algorithm
-            \end{itemize}
+        \begin{block}{Input Flooding}
+          \begin{itemize}
+              \item Rate limiting
+              \item Proof-of-Work puzzle
+          \end{itemize}
         \end{block}
 
-      \end{columns}
+    \end{columns}
 \end{frame}
 \note{
     Notes...
@@ -104,11 +95,16 @@
 \subsection{Practicalities}
 
 \begin{frame}{Practicalities: Stopping in a Fair Way}
-    A common necessity for most real world applications that requires longer input collection time than e.g.\ 1 minute.
+    Desirable properties:
+    \begin{itemize}
+        \item High output frequency
+        \item Long input collection time
+    \end{itemize}
 
-    Stop message needed to make the stopping entity unable to stop when they deem it most beneficial. They can stop, and then see the result (commitment).
+    Solution: Hash together several outputs
 
-    Pattern, usability apps can support this in a standardized way (we cannot assume every application can get it right anyways).
+    "STOP" messages necessary
+
 \end{frame}
 \note{
     Notes...
@@ -117,7 +113,7 @@
 \begin{frame}{Practicalities: Extending Trust into the Reality}
     How can we ensure that the lottery pays the money?
     \begin{itemize}
-        \item Trust them and use third-party entity in case of problems (e.g.\ court).
+        \item Trust them
         \item Cryptocurrencies and smart contracts.
     \end{itemize}
 \end{frame}
