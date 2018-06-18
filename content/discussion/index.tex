@@ -105,16 +105,16 @@
         \draw[ultra thick] (0,0) ellipse (1 and 2)
             (4,0) ellipse (1 and 2);
         % \clip (0,0) ellipse (1 and 2) (4,0) ellipse (1 and 2);
-        \only<1>{
+        \only<2>{
             \fill (0.5, 0.9) circle(1.5pt);
             \fill (-0.3, 1.3) circle(1.5pt);
             \fill (-0.2, -1.4) circle(1.5pt);
             \fill (-0.7, 0.1) circle(1.5pt);
         }
-        \only<1-3>{
+        \only<1-4>{
             \fill (0.3, -0.4) circle(1.5pt);
         }
-        \only<3>{
+        \only<4>{
             \coordinate (end) at (0.3, -0.4);
             \coordinate (start) at (1.5, -1);
             \draw[-latex, shorten <=3pt, thick, draw=red] (start) -- (end);
