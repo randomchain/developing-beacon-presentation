@@ -72,3 +72,22 @@ titleformat=smallcaps,%
 \definecolor{GoogleBrown}{HTML}{795548}
 \definecolor{GoogleGrey}{HTML}{9E9E9E}
 \definecolor{GoogleBlueGrey}{HTML}{607D8B}
+<<<<<<< 02db3cc70bda674ae07ecd8c324c0a953d1224e9
+=======
+
+
+%Dread
+\def\innerdrea(#1,#2,#3,#4,#5) {%
+    \begin{tikzpicture}[xscale=0.25, yscale=0.25, baseline=-.5ex]
+        \scriptsize
+        \foreach \x/\name/\value in {0/D/#1,1/R/#2,2/E/#3,3/A/#4} {
+            \node[GoogleGrey] at (\x,1) {\name};
+            \node[descriptionlabeling, thick] at (\x,0) {\value};
+        }
+        \node[GoogleGrey] at (4.5,1) {$\Sigma$};
+        \node[descriptionlabeling, thick] at (4.5,0) {#5};
+    \end{tikzpicture}
+}
+
+\def\drea#1{\innerdrea(#1)}
+>>>>>>> no more headaches
