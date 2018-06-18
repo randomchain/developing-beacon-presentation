@@ -94,10 +94,36 @@
 }
 
 \begin{frame}{Rational Trust}
-    Trusting an input (potentially your own) is not the only view point.
-    \pause
 
-    It is enough to trust that no disjoint groups of users will collude.
+    \centering
+    \enquote{The beacon is secure if there are (at least)\\two non-colluding disjoint sets of input}
+
+    \vspace{.3cm}
+    \begin{tikzpicture}
+        \draw[ultra thick] (0,0) ellipse (1 and 2)
+            (4,0) ellipse (1 and 2);
+        % \clip (0,0) ellipse (1 and 2) (4,0) ellipse (1 and 2);
+        \only<1>{
+            \fill (0.5, 0.9) circle(1.5pt);
+            \fill (-0.3, 1.3) circle(1.5pt);
+            \fill (-0.2, -1.4) circle(1.5pt);
+            \fill (-0.7, 0.1) circle(1.5pt);
+        }
+        \only<1-3>{
+            \fill (0.3, -0.4) circle(1.5pt);
+        }
+        \only<3>{
+            \coordinate (end) at (0.3, -0.4);
+            \coordinate (start) at (1.5, -1);
+            \draw[-latex, shorten <=3pt, thick, draw=red] (start) -- (end);
+        }
+
+        \fill (3.7, 1.4) circle(1.5pt);
+        \fill (4.2, -1.6) circle(1.5pt);
+        \fill (3.7, -0.5) circle(1.5pt);
+        \fill (4.7, 0.1) circle(1.5pt);
+    \end{tikzpicture}
+
 \end{frame}
 \note{
     Notes...
