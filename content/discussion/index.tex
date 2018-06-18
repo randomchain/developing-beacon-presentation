@@ -23,10 +23,11 @@
 }
 
 \begin{frame}{Alternative Delay Functions}
+    \centering
     \textbf{Two solutions:}
 
     \vspace{.5cm}
-    \centering
+    
     \begin{columns}[T, onlytextwidth]
         \column{0.47\textwidth}
         \begin{block}{Use Memory-Hard Delay Function}
@@ -96,8 +97,9 @@
 \begin{frame}{Rational Trust}
 
     \centering
-    \enquote{The beacon is secure if there are (at least)\\two non-colluding disjoint sets of input}
-
+    \enquote{The beacon is secure if there are (at least)\\\textbf{two non-colluding disjoint sets of input}}
+    
+    \pause
     \vspace{.3cm}
     \begin{tikzpicture}
         \draw[ultra thick] (0,0) ellipse (1 and 2)
@@ -167,11 +169,16 @@
 
 \begin{frame}{Summary}
     Succinct beacon design and implementation
-    \pause
     \begin{itemize}
-        \item Trust them
-        \pause
-        \item Cryptocurrencies and smart contracts
+        \item Enumerate threats
+        \item Describe usage of beacon in context
+        \item Of more technical nature:
+        \begin{itemize}
+            \item Parallelized pipeline
+            \item Early release of inputs (CCO)
+            \item Multiple input/output channels
+            \item Usage of Merkle trees
+        \end{itemize}
     \end{itemize}
 \end{frame}
 \note{
