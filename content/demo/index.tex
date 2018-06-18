@@ -94,27 +94,34 @@
     \end{itemize}
 }
 
+\newlength{\smallerspacing}
+\setlength{\smallerspacing}{-.5em}
+
 \begin{frame}[t]{Usability Applications}
     \begin{columns}[T,onlytextwidth]
         \column{0.49\textwidth}
 
         \begin{block}{Verification CLI}
             \small
-            \begin{compactitem}
-                \item Check inclusion of an input
-                \item Verify computation (Sloth)
-            \end{compactitem}
+            \vspace{-.5em}
+            \begin{itemize}
+                \item Check inclusion of an input\itemsep=\smallerspacing
+                \item Verify computation (sloth)
+            \end{itemize}
+            \vspace{-.5em}
         \end{block}
 
         \only<3->{%
         \begin{block}{User Daemon}
             \small
-            \begin{compactitem}
-                \item Constantly input in the background
-                \item Check all commitments
-                \item Verify all outputs
+            \vspace{-.5em}
+            \begin{itemize}
+                \item Constantly input in background\itemsep=\smallerspacing
+                \item Check all commitments\itemsep=\smallerspacing
+                \item Verify all outputs\itemsep=\smallerspacing
                 \item Supply latest trustable output to user
-            \end{compactitem}
+            \end{itemize}
+            \vspace{-.5em}
         \end{block}
         }
 
@@ -124,22 +131,26 @@
 
         \begin{block}{Web App}
             \small
-            \begin{compactitem}
-                \item Give input
-                \item Check commits
-                \item Explore Merkle Tree
+            \vspace{-.5em}
+            \begin{itemize}
+                \item Give input\itemsep=\smallerspacing
+                \item Check commits\itemsep=\smallerspacing
+                \item Explore Merkle Tree\itemsep=\smallerspacing
                 \item Explore Output and proof
-            \end{compactitem}
+            \end{itemize}
+            \vspace{-.5em}
         \end{block}
 
         \only<3->{%
         \begin{block}{API}
             \small
-            \begin{compactitem}
-                \item Use beacon in the background
-                \item Present trustable randomness
+            \vspace{-.5em}
+            \begin{itemize}
+                \item Use beacon in the background\itemsep=\smallerspacing
+                \item Present trustable randomness\itemsep=\smallerspacing
                 \item Can be used to implement custom ceremonies
-            \end{compactitem}
+            \end{itemize}
+            \vspace{-.5em}
         \end{block}
         }
     \end{columns}
@@ -172,4 +183,3 @@
 %   Verification CLI
 %   Web app ??
 % Present other possible supporting apps
-
