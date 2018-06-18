@@ -19,7 +19,7 @@
 \note{
     \begin{itemize}
         \item aaaa
-    \end{itemize} 
+    \end{itemize}
 }
 
 \begin{frame}{Alternative Delay Functions}
@@ -60,11 +60,11 @@
 
         \begin{block}{Cryptography Exploit}
             \begin{itemize}
-                
+
                 \item Beacon not dependent on any algorithm
             \end{itemize}
         \end{block}
-
+        \pause
         \begin{block}{Eclipse Attacks}
             \begin{itemize}
                 \item Have multiple connections to outside world
@@ -72,13 +72,14 @@
         \end{block}
 
         \column{0.47\textwidth}
-
+        \pause
         \begin{block}{Operator Shutdown}
             \begin{itemize}
                 \item Only disrupts use cases
             \end{itemize}
         \end{block}
 
+        \pause
         \begin{block}{Input Flooding}
           \begin{itemize}
               \item Rate limiting
@@ -95,15 +96,20 @@
 \subsection{Practicalities}
 
 \begin{frame}{Practicalities: Stopping in a Fair Way}
-    Desirable properties:
+    \textbf{Desirable beacon properties:}
     \begin{itemize}
         \item High output frequency
         \item Long input collection time
     \end{itemize}
 
-    Solution: Hash together several outputs
+    \vspace{.7cm}
+    \centering
+    \pause
+    Solution: Ceremonies on top of beacon
 
-    "STOP" messages necessary
+    \vspace{.3em}
+    \pause
+    Standardize this common pattern
 
 \end{frame}
 \note{
@@ -112,8 +118,10 @@
 
 \begin{frame}{Practicalities: Extending Trust into the Reality}
     How can we ensure that the lottery pays the money?
+    \pause
     \begin{itemize}
         \item Trust them
+        \pause
         \item Cryptocurrencies and smart contracts
     \end{itemize}
 \end{frame}
