@@ -49,7 +49,8 @@
         \begin{itemize}
             \item Cryptography Exploits
             \begin{itemize}
-                \item (cannot anticipate these)
+                \item cannot anticipate these
+                \item (not dependent)
                 \item We can mitigate if and when exploit is found
             \end{itemize}
             
@@ -76,7 +77,7 @@
             \item Input Flooding
             \begin{itemize}
                 \item Real risk, but not just for beacons
-                \item Many existing ways to migitage
+                \item Many existing ways to mitigate
                 \item Rate limiting to acceptable level
                 \item Investigate proof-of-work
                 \begin{itemize}
@@ -92,10 +93,10 @@
 
 \begin{frame}{Alternative Delay Functions}
     \centering
-    A dedicated ASIC to compute \emph{sloth} may be faster.
+    Computing sloth: An ASIC may be faster
     \\
     \vspace{1cm}
-    Adversary with ASIC must also be able to execute an attack.
+    Adversary with ASIC must also successfully execute attack
 \end{frame}
 \note{
     \begin{itemize}
@@ -104,6 +105,7 @@
         \item How much faster? Good question
         \begin{itemize}
             \item Few orders of magnitude might pose a problem
+            \item This is because user will not see a commitment before ASIC has had time
         \end{itemize}
         \item Posessing an ASIC not enough \textrightarrow{} also launch attack
         \item Since the OP can buy ASIC, we must deter usage of them
@@ -139,7 +141,7 @@
         \item ASIC can be counteracted by either
         \begin{itemize}
             \item requiring a lot of memory
-            \item changing or permutating delay faster
+            \item changing or permutating delay function
         \end{itemize}
         \item ASICs have limited memory
         \begin{itemize}
@@ -153,8 +155,8 @@
             \begin{itemize}
                 \item Does 1 thing, hard-wired
             \end{itemize}
-            \item Changing / Permutating \textrightarrow{} redesign of ASIC (expensive)
             \item No dependency on delay function, trivially change it.
+            \item Changing / Permutating \textrightarrow{} redesign of ASIC (expensive)
         \end{itemize}
     \end{itemize}
 }
@@ -224,6 +226,7 @@
 
 \begin{frame}{Practicalities: Stopping in a Fair Way}
     \note{
+        \begin{multicols}{2}
         \begin{itemize}
             \item A necessity that turns up: Extend input coll. time to more than beacon's ict
             \item It turns out:
@@ -242,7 +245,9 @@
                 \item Entity controlling when to stop, cannot know when it is most beneficial.
                 \item Can only see the result afterwards
             \end{itemize}
+            \item Patterns like this \textrightarrow{} standardized in usability apps (multiple implementations)
         \end{itemize}
+    \end{multicols}
     }
     \textbf{Desirable beacon properties:}
     \begin{itemize}
@@ -261,37 +266,37 @@
 
 \end{frame}
 
-\begin{frame}{Practicalities: Extending Trust into the Reality}
-    \note{
-        \begin{itemize}
-            \item Last point I want to talk about is how to extend trust real life
-            \begin{itemize}
-                \item A problem blockchains currently face, don't have a good solution for
-            \end{itemize}
-            \item Essentially, (how ensure lottery pays money)
-            \begin{itemize}
-                \item today, trust, reputation is important
-            \end{itemize}
-            \item In the future, if cryptocurrencies are widespread
-            \begin{itemize}
-                \item Smart contracts lock-in funds in lottery, and automatically pays out prize to winner.
-                \item Beacon is a primitive. Users in lottery also needs input to beacon.
-            \end{itemize}
-            \item Brings up questions:
-            \begin{itemize}
-                \item How can output be transfered to smart contract securely?
-            \end{itemize}
-            \item Today, users don't want prize in cryptocurrency. And so, trust is still needed for use cases that bridge to the real world.
-        \end{itemize}
-    }
-    How can we ensure that the lottery pays the money?
-    \pause
-    \begin{itemize}
-        \item Trust them
-        \pause
-        \item Cryptocurrencies and smart contracts
-    \end{itemize}
-\end{frame}
+% \begin{frame}{Practicalities: Extending Trust into the Reality}
+%     \note{
+%         \begin{itemize}
+%             \item Last point I want to talk about is how to extend trust real life
+%             \begin{itemize}
+%                 \item A problem blockchains currently face, don't have a good solution for
+%             \end{itemize}
+%             \item Essentially, (how ensure lottery pays money)
+%             \begin{itemize}
+%                 \item today, trust, reputation is important
+%             \end{itemize}
+%             \item In the future, if cryptocurrencies are widespread
+%             \begin{itemize}
+%                 \item Smart contracts lock-in funds in lottery, and automatically pays out prize to winner.
+%                 \item Beacon is a primitive. Users in lottery also needs input to beacon.
+%             \end{itemize}
+%             \item Brings up questions:
+%             \begin{itemize}
+%                 \item How can output be transfered to smart contract securely?
+%             \end{itemize}
+%             \item Today, users don't want prize in cryptocurrency. And so, trust is still needed for use cases that bridge to the real world.
+%         \end{itemize}
+%     }
+%     How can we ensure that the lottery pays the money?
+%     \pause
+%     \begin{itemize}
+%         \item Trust them
+%         \pause
+%         \item Cryptocurrencies and smart contracts
+%     \end{itemize}
+% \end{frame}
 
 \begin{frame}{Summary}
     Succinct beacon design and implementation
