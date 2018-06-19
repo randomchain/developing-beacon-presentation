@@ -5,16 +5,16 @@
     \sectionpage
 
     \centering
-    \vspace{.6cm}
-    \begin{minipage}{.9\textwidth}
-        \begin{multicols}{2}
+    % \vspace{.6cm}
+    \begin{minipage}{.71\textwidth}
+        % \begin{multicols}{2}
             \begin{itemize}
                 \item Unmitigated threats
                 \item Alternative delay functions
                 \item Rational trust
-                \item Stopping in a fair way
+                % \item Stopping in a fair way
             \end{itemize}
-        \end{multicols}
+        % \end{multicols}
     \end{minipage}
 \end{frame}
 \note{
@@ -22,7 +22,7 @@
         \item Discuss unmitigated threats,
         \item Discuss alternatives to our delay function
         \item \textbf{Clarify} (what we mean with) rational trust
-        \item Discuss how to stop in a fair way
+        % \item Discuss how to stop in a fair way
         \item ...
         \item 4 threats we did not account for
     \end{itemize}
@@ -106,6 +106,7 @@
                     \item Solve computationally hard puzzle
                 \end{itemize}
             \end{itemize}
+            \item 3.00
         \end{itemize}
     \end{multicols}
 }\end{frame}
@@ -179,6 +180,7 @@
             \item No dependency on delay function, trivially change it.
             \item Changing / Permutating \textrightarrow{} redesign of ASIC (expensive)
         \end{itemize}
+        \item 6.00
     \end{itemize}
 }
 
@@ -242,47 +244,47 @@
 
 \end{frame}
 
-\begin{frame}{Practicalities: Stopping in a Fair Way}
-    \note{
-        \begin{multicols}{2}
-        \begin{itemize}
-            \item A necessity that turns up: Extend input coll. time to more than beacon's ict
-            \item It turns out:
-            \begin{itemize}
-                \item \textbf{fresh randomness} with high frequency
-                \item \textbf{in cases with many users}: a long input collection time
-                \item (all involved users need to see one common commit)
-            \end{itemize}
-            \item Pattern we quickly discovered 
-            \item Solution: perform ceremony that combines several outputs
-            \begin{itemize}
-                \item with \textbf{last output} being determined by a "stop"-message.
-            \end{itemize}
-            \item This way, \textbf{security goals of beacon are extended} to use cases
-            \begin{itemize}
-                \item Entity controlling when to stop, cannot know when it is most beneficial.
-                \item Can only see the result afterwards
-            \end{itemize}
-            \item SLIDE Patterns like this \textrightarrow{} standardized in usability apps (multiple implementations)
-        \end{itemize}
-    \end{multicols}
-    }
-    \textbf{Desirable beacon properties:}
-    \begin{itemize}
-        \item High output frequency
-        \item Long input collection time
-    \end{itemize}
+% \begin{frame}{Practicalities: Stopping in a Fair Way}
+%     \note{
+%         \begin{multicols}{2}
+%         \begin{itemize}
+%             \item A necessity that turns up: Extend input coll. time to more than beacon's ict
+%             \item It turns out:
+%             \begin{itemize}
+%                 \item \textbf{fresh randomness} with high frequency
+%                 \item \textbf{in cases with many users}: a long input collection time
+%                 \item (all involved users need to see one common commit)
+%             \end{itemize}
+%             \item Pattern we quickly discovered 
+%             \item Solution: perform ceremony that combines several outputs
+%             \begin{itemize}
+%                 \item with \textbf{last output} being determined by a "stop"-message.
+%             \end{itemize}
+%             \item This way, \textbf{security goals of beacon are extended} to use cases
+%             \begin{itemize}
+%                 \item Entity controlling when to stop, cannot know when it is most beneficial.
+%                 \item Can only see the result afterwards
+%             \end{itemize}
+%             \item SLIDE Patterns like this \textrightarrow{} standardized in usability apps (multiple implementations)
+%         \end{itemize}
+%     \end{multicols}
+%     }
+%     \textbf{Desirable beacon properties:}
+%     \begin{itemize}
+%         \item High output frequency
+%         \item Long input collection time
+%     \end{itemize}
 
-    \vspace{.7cm}
-    \centering
-    \pause
-    Solution: Ceremonies on top of beacon
+%     \vspace{.7cm}
+%     \centering
+%     \pause
+%     Solution: Ceremonies on top of beacon
 
-    \vspace{.3em}
-    \pause
-    Standardize this common pattern
+%     \vspace{.3em}
+%     \pause
+%     Standardize this common pattern
 
-\end{frame}
+% \end{frame}
 
 % \begin{frame}{Practicalities: Extending Trust into the Reality}
 %     \note{
