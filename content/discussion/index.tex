@@ -242,8 +242,6 @@
 
 \end{frame}
 
-
-
 \begin{frame}{Practicalities: Stopping in a Fair Way}
     \note{
         \begin{multicols}{2}
@@ -251,21 +249,21 @@
             \item A necessity that turns up: Extend input coll. time to more than beacon's ict
             \item It turns out:
             \begin{itemize}
-                \item fresh randomness with high frequency
-                \item in some cases: a long input collection time
+                \item \textbf{fresh randomness} with high frequency
+                \item \textbf{in cases with many users}: a long input collection time
                 \item (all involved users need to see one common commit)
             \end{itemize}
             \item Pattern we quickly discovered 
             \item Solution: perform ceremony that combines several outputs
             \begin{itemize}
-                \item with last output being determined by a "stop"-message.
+                \item with \textbf{last output} being determined by a "stop"-message.
             \end{itemize}
-            \item This way, security goals of beacon are extended to use cases
+            \item This way, \textbf{security goals of beacon are extended} to use cases
             \begin{itemize}
                 \item Entity controlling when to stop, cannot know when it is most beneficial.
                 \item Can only see the result afterwards
             \end{itemize}
-            \item Patterns like this \textrightarrow{} standardized in usability apps (multiple implementations)
+            \item SLIDE Patterns like this \textrightarrow{} standardized in usability apps (multiple implementations)
         \end{itemize}
     \end{multicols}
     }
@@ -334,23 +332,23 @@
 \end{frame}
 \note{
     \begin{multicols}{2}
-    \begin{itemize}
-        \item All in all:
         \begin{itemize}
-            \item explored, designed, implemented RB with succinct operation.
-        \end{itemize} 
-        \item More concretely, we fill a gap in current literature with the following points:
-        \begin{itemize}
-            \item First, \textbf{Enumerate threats}: previous papers don't do this \textbf{up-front} and more casually mentions threats as an after-thought to their design.
-            \item \textbf{Describe usage of beacon in real world context}: Other papers just lists use cases, and \textbf{not how to properly apply}
-            \item \textbf{Of more technical nature:}
+            \item All in all:
             \begin{itemize}
-            \item Explicitly consider how to parallelize (not considered before)
-            \item We re-think flow of transparent authorities, inputs released early (mitigate output withholding attacks).
-            \item Allow multiple input/output channels (first ones to explore more than a sidenote)
-            \item Finally, we use Merkle trees for structuring inputs (decreases proof size for regular users, as far as we know: only beacon that does this)
+                \item explored, designed, implemented RB with succinct operation.
+            \end{itemize} 
+            \item More concretely, we fill a gap in current literature with the following points:
+            \begin{itemize}
+                \item First, \textbf{Enumerate threats}: previous papers don't do this \textbf{up-front} and more casually mentions threats as an after-thought to their design.
+                \item \textbf{Describe usage of beacon in real world context}: Other papers just list use cases, and \textbf{not how to properly apply}
+                \item \textbf{Of more technical nature:}
+                \begin{itemize}
+                \item Explicitly consider how to parallelize (not considered before)
+                \item We re-think flow of transparent authorities, inputs released early (mitigate output withholding attacks).
+                \item Allow multiple input/output channels (first ones to explore more than a sidenote)
+                \item Finally, we use Merkle trees for structuring inputs (decreases proof size for regular users, as far as we know: only beacon that does this)
+                \end{itemize}
             \end{itemize}
         \end{itemize}
-    \end{itemize}
-\end{multicols}
+    \end{multicols}
 }
