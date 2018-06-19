@@ -299,14 +299,31 @@
         \item Enumerate threats
         \item Describe usage of beacon in context
         % \item Of more technical nature:
-        % \begin{itemize}
-            \item Parallelized pipeline
-            \item Early release of inputs (CCO)
-            \item Multiple input/output channels
-            \item Usage of Merkle trees
-        % \end{itemize}
+    \end{itemize}
+    \begin{itemize}
+        \item Parallelize pipeline
+        \item Early release of inputs (CCO)
+        \item Multiple input/output channels
+        \item Usage of Merkle trees
     \end{itemize}
 \end{frame}
 \note{
-    Notes...
+    \begin{itemize}
+        \item All in all:
+        \begin{itemize}
+            \item explored, designed, implemented RB with succinct operation.
+        \end{itemize} 
+        \item More concretely, we fill a gap in current literature with the following points:
+        \begin{itemize}
+            \item Enumerate threats: previous papers don't do this up-front and more casually mentions threats as an after-thought to their design.
+            \item Describe usage of beacon in real world context: Other papers just mention, and not how to properly apply
+            \item \textbf{Of more technical nature:}
+            \begin{itemize}
+            \item Explicitly consider how to parallelize (not considered before)
+            \item We re-think flow of transparent authorities, inputs released early (mitigate output withholding attacks).
+            \item Allow multiple input/output channels (first ones to explore more than a sidenote)
+            \item Finally, we use Merkle trees for structuring inputs (decreases proof size for regular users, as far as we know: only beacon that does this)
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
 }
