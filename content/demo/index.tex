@@ -6,29 +6,14 @@
 }
 
 \begin{frame}[t]{Architecture}
-    \textbf{Service Oriented}
+    \textbf{Service Oriented --- Pipeline}
     \begin{itemize}
-        \item Separation of concerns
+        \item Compose a beacon to fit needs
+        \item Scalability and fault tolerance
         \item Components/Services are black boxes
         \item Must adhere to predefined communication API
-        \item Components can be added or removed dynamically
-        \item Scalability and fault tolerance
-        \item Compose a beacon to fit needs
-    \end{itemize}
-    \note{
-        \begin{itemize}
-            \item Uhm.
-        \end{itemize}
-    }
-\end{frame}
-\begin{frame}[t]{Architecture}
-    \textbf{Pipeline}
-    \begin{itemize}
-        \item More strict pattern
         \item Data flows in one direction
-        \item Components are producers, consumers, or both
-        \item No cyclic communication
-        \item Clean interface
+        \item Components can be added or removed dynamically
     \end{itemize}
     \note{
         \begin{itemize}
@@ -148,8 +133,8 @@
             \begin{itemize}
                 \item Give input\itemsep=\smallerspacing
                 \item Check commits\itemsep=\smallerspacing
-                \item Explore Merkle tree\itemsep=\smallerspacing
-                \item Explore output and proof
+                \item Explore output and proof\itemsep=\smallerspacing
+                \item Explore Merkle tree
             \end{itemize}
             \vspace{-.5em}
         \end{block}
