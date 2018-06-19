@@ -1,7 +1,7 @@
 \section{Discussion}
 \note{
     \begin{itemize}
-        \item Notes...
+        \item 4 threats we did not account for
     \end{itemize}
 }
 
@@ -44,10 +44,49 @@
         \end{block}
 
     \end{columns}
-\end{frame}
 \note{
-    Notes...
-}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Cryptography Exploits
+            \begin{itemize}
+                \item (cannot anticipate these)
+                \item We can mitigate if and when exploit is found
+            \end{itemize}
+            
+            \item Eclipse Attacks
+            \begin{itemize}
+                \item Not much we can do, besides
+                \item Perhaps even other ways besides internet
+                \begin{itemize}
+                    \item Wireless option: SMS
+                \end{itemize}
+            \end{itemize}
+
+            \item Operator Shutdown
+            \begin{itemize}
+                \item Downside of having single authority
+                \item The attack is about: shutting down beacon \textrightarrow{} not even accept input
+                \begin{itemize}
+                    \item Users will not have stake in it
+                    \item Operator will not gain any benefit
+                    \item ... only disrupting uses cases relying on beacon
+                \end{itemize}
+            \end{itemize}
+
+            \item Input Flooding
+            \begin{itemize}
+                \item Real risk, but not just for beacons
+                \item Many existing ways to migitage
+                \item Rate limiting to acceptable level
+                \item Investigate proof-of-work
+                \begin{itemize}
+                    \item Solve computationally hard puzzle
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{multicols}
+}\end{frame}
+
 
 \subsection{Alternative Delay Functions}
 
@@ -60,7 +99,14 @@
 \end{frame}
 \note{
     \begin{itemize}
-        \item aaaa
+        \item Choice of sloth may be re-considered
+        \item Presumably, dedicated hardware...
+        \item How much faster? Good question
+        \begin{itemize}
+            \item Few orders of magnitude might pose a problem
+        \end{itemize}
+        \item Posessing an ASIC not enough \textrightarrow{} also launch attack
+        \item Since the OP can buy ASIC, we must deter usage of them
     \end{itemize}
 }
 
@@ -74,8 +120,8 @@
         \column{0.47\textwidth}
         \begin{block}{Use Memory-Hard Delay Function}
             \begin{itemize}
-                \item ASICs have limited memory.
-                \item Requiring memory in delay function makes ASICs infeasible
+                \item ASICs have limited memory
+                \item Memory is slow in large quantities
             \end{itemize}
         \end{block}
 
@@ -83,21 +129,64 @@
         \begin{block}{Change Delay Function}
             \begin{itemize}
                 \item ASIC: expensive and hard-wired
-                \item Beacon: Changing/permutating delay function is free
+                \item Beacon: Changing or permutating delay function is free
             \end{itemize}
         \end{block}
     \end{columns}
 \end{frame}
 \note{
     \begin{itemize}
-        \item aaaaa
+        \item ASIC can be counteracted by either
+        \begin{itemize}
+            \item requiring a lot of memory
+            \item changing or permutating delay faster
+        \end{itemize}
+        \item ASICs have limited memory
+        \begin{itemize}
+            \item if much memory required \textrightarrow{} cost-prohibitive to have fast memory
+            \item 1-2 gb required \textrightarrow{} must be normal computer ram
+            \item slow compared to rest of ASIC \textrightarrow{} bottleneck (CPU-comparable levels)
+        \end{itemize}
+        \item Change / Permutate Delay Function
+        \begin{itemize}
+            \item ASIC is designed for 1 purpose \textrightarrow{} One-trick pony
+            \begin{itemize}
+                \item Does 1 thing, hard-wired
+            \end{itemize}
+            \item Changing / Permutating \textrightarrow{} redesign of ASIC (expensive)
+            \item No dependency on delay function, trivially change it.
+        \end{itemize}
     \end{itemize}
 }
 
-
-
 \begin{frame}{Rational Trust}
-
+    \note{
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item In paper: user needs to trust input (by himself / other user, doesn't matter)
+            \begin{itemize}
+                \item We have thought more about this, and specify it more precisely:
+                \item SLIDE (at least two non-colluding disjoint sets of input)
+            \end{itemize}
+            \item So even if one half is colluding, and other, too
+            \begin{itemize}
+                \item Output is secure
+                \item Two halves are \textbf{counteracting} eachother
+            \end{itemize}
+            \item A set may just consist of one input
+            \begin{itemize}
+                \item and to make sure of two non-colluding sets, SLIDE this should be your input
+                \item Even if all other inputs in this set over here are colluding, the output is secure
+            \end{itemize}
+            \item If you relax your requirements as a user
+            \begin{itemize}
+                \item if not contributing, you can still trust in some circumstances
+                \item You know two users contributed. Not trust them, but you believe they did not collude
+            \end{itemize}
+        \end{itemize}
+    \end{multicols}
+    }
+    \pause
     \centering
     \enquote{The beacon is secure if there are (at least)\\\textbf{two non-colluding disjoint sets of input}}
     
@@ -107,16 +196,16 @@
         \draw[ultra thick] (0,0) ellipse (1 and 2)
             (4,0) ellipse (1 and 2);
         % \clip (0,0) ellipse (1 and 2) (4,0) ellipse (1 and 2);
-        \only<2>{
+        \only<3>{
             \fill (0.5, 0.9) circle(1.5pt);
             \fill (-0.3, 1.3) circle(1.5pt);
             \fill (-0.2, -1.4) circle(1.5pt);
             \fill (-0.7, 0.1) circle(1.5pt);
         }
-        \only<1-4>{
+        \only<1-5>{
             \fill (0.3, -0.4) circle(1.5pt);
         }
-        \only<4>{
+        \only<5>{
             \coordinate (end) at (0.3, -0.4);
             \coordinate (start) at (1.5, -1);
             \draw[-latex, shorten <=3pt, thick, draw=red] (start) -- (end);
@@ -129,13 +218,32 @@
     \end{tikzpicture}
 
 \end{frame}
-\note{
-    Notes...
-}
+
 
 \subsection{Practicalities}
 
 \begin{frame}{Practicalities: Stopping in a Fair Way}
+    \note{
+        \begin{itemize}
+            \item A necessity that turns up: Extend input coll. time to more than beacon's ict
+            \item It turns out:
+            \begin{itemize}
+                \item fresh randomness with high frequency
+                \item in some cases: a long input collection time
+                \item (all involved users need to see one common commit)
+            \end{itemize}
+            \item Pattern we quickly discovered 
+            \item Solution: perform ceremony that combines several outputs
+            \begin{itemize}
+                \item with last output being determined by a "stop"-message.
+            \end{itemize}
+            \item This way, security goals of beacon are extended to use cases
+            \begin{itemize}
+                \item Entity controlling when to stop, cannot know when it is most beneficial.
+                \item Can only see the result afterwards
+            \end{itemize}
+        \end{itemize}
+    }
     \textbf{Desirable beacon properties:}
     \begin{itemize}
         \item High output frequency
@@ -152,11 +260,30 @@
     Standardize this common pattern
 
 \end{frame}
-\note{
-    Notes...
-}
 
 \begin{frame}{Practicalities: Extending Trust into the Reality}
+    \note{
+        \begin{itemize}
+            \item Last point I want to talk about is how to extend trust real life
+            \begin{itemize}
+                \item A problem blockchains currently face, don't have a good solution for
+            \end{itemize}
+            \item Essentially, (how ensure lottery pays money)
+            \begin{itemize}
+                \item today, trust, reputation is important
+            \end{itemize}
+            \item In the future, if cryptocurrencies are widespread
+            \begin{itemize}
+                \item Smart contracts lock-in funds in lottery, and automatically pays out prize to winner.
+                \item Beacon is a primitive. Users in lottery also needs input to beacon.
+            \end{itemize}
+            \item Brings up questions:
+            \begin{itemize}
+                \item How can output be transfered to smart contract securely?
+            \end{itemize}
+            \item Today, users don't want prize in cryptocurrency. And so, trust is still needed for use cases that bridge to the real world.
+        \end{itemize}
+    }
     How can we ensure that the lottery pays the money?
     \pause
     \begin{itemize}
@@ -165,22 +292,19 @@
         \item Cryptocurrencies and smart contracts
     \end{itemize}
 \end{frame}
-\note{
-    Notes...
-}
 
 \begin{frame}{Summary}
     Succinct beacon design and implementation
     \begin{itemize}
         \item Enumerate threats
         \item Describe usage of beacon in context
-        \item Of more technical nature:
-        \begin{itemize}
+        % \item Of more technical nature:
+        % \begin{itemize}
             \item Parallelized pipeline
             \item Early release of inputs (CCO)
             \item Multiple input/output channels
             \item Usage of Merkle trees
-        \end{itemize}
+        % \end{itemize}
     \end{itemize}
 \end{frame}
 \note{
