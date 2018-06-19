@@ -32,7 +32,10 @@
     \end{itemize}
     \note{
         \begin{itemize}
-            \item Wow
+            \item Generally we are not concerned with ``lost'' data
+            \item This motivates non-fragile use, i.e.\ users should not rely on the beacon in a critical manner
+
+            \item We send data, not commands --- no state or side-effects (functional)
         \end{itemize}
     }
 \end{frame}
@@ -106,6 +109,7 @@
             \vspace{-.5em}
             \begin{itemize}
                 \item Check inclusion of an input\itemsep=\smallerspacing
+                \item Validate in Merkle tree\itemsep=\smallerspacing
                 \item Verify computation (sloth)
             \end{itemize}
             \vspace{-.5em}
@@ -119,7 +123,7 @@
                 \item Constantly input in background\itemsep=\smallerspacing
                 \item Check all commitments\itemsep=\smallerspacing
                 \item Verify all outputs\itemsep=\smallerspacing
-                \item Supply latest trustable output to user
+                \item Supply trustable outputs to user
             \end{itemize}
             \vspace{-.5em}
         \end{block}
@@ -148,7 +152,7 @@
             \begin{itemize}
                 \item Use beacon in the background\itemsep=\smallerspacing
                 \item Present trustable randomness\itemsep=\smallerspacing
-                \item Can be used to implement custom ceremonies
+                \item Used to implement ceremonies
             \end{itemize}
             \vspace{-.5em}
         \end{block}
